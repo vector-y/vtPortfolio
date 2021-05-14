@@ -158,10 +158,10 @@ export default {
         '42px',
         '52px',
         '58px',
-        '66px',
+        '58px',
       ],
       lineHeight: [1.3, null, null, null, null, 1.2],
-      fontWeight: 700,
+      fontWeight: 500,
       mb: [4, null, null, null, null, 5],
     },
     heroSecondary: {

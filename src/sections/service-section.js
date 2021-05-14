@@ -4,40 +4,86 @@ import { jsx, Container, Box, Grid, Text, Heading, Button, Image } from 'theme-u
 import { keyframes } from '@emotion/core';
 import TextFeature from 'components/text-feature';
 import ModalVideo from 'react-modal-video';
-import { IoIosPlay } from 'react-icons/io';
+import { IoIosPlay, IoMdHeartEmpty } from 'react-icons/io';
 
-import ServiceThumb from 'assets/service-thumb.png';
+import ServiceThumb from 'assets/service-thumb.jpg';
 import shapePattern from 'assets/shape-pattern1.png';
 
 import Smart from 'assets/services/smart.svg';
 import Secure from 'assets/services/secure.svg';
 
 const data = {
-  subTitle: 'our services',
-  title: 'Business Goals Achieved with Design',
+  subTitle: 'hobbies',
+  title: 'Art and Technology.',
   features: [
     {
       id: 1,
       imgSrc: Smart,
-      altText: 'Smart Features',
-      title: 'Smart Features',
+      altText: 'Video Editing',
+      title: 'Youtube',
       text:
-        'Get your blood tests delivered at let home collect sample from the victory of the managements. your blood tests.',
+        'I love vlogging when I hang out with friends! Check out how I spend my free time in this video here.',
     },
     {
       id: 2,
       imgSrc: Secure,
-      altText: 'Secure Contents',
-      title: 'Secure Contents',
+      altText: '3D Modeling',
+      title: '3D Modeling',
       text:
-        'Get your blood tests delivered at let home collect sample from the victory of the managements. your blood tests.',
+        'My love for art (as shown by the donut I made) motivates me to learn 3D modeling so I can venture into augmented reality sometime soon.',
     },
   ],
 };
 
 export default function ServiceSection() {
+  const [videoOpen, setVideoOpen] = useState(false);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    setVideoOpen(true);
+  }
   return (
-    <h1>Service Section</h1>
+    <section sx={{variant: 'seciton.services'}}>
+      <Container sx={styles.containerBox}>
+        <Box sx={styles.thumbnail}>
+          <Image src={ServiceThumb} alt="Thumbnail"/>
+          <Button
+            sx={styles.videoBtn}
+            onClick={handleClick}
+            aria-label="Play Button"
+          >
+          <span>
+            <IoIosPlay/>
+          </span>
+          </Button>
+          <Box sx={styles.shapeBox}>
+            <Image src={shapePattern} alt="shape"/>
+          </Box>
+        </Box>
+        <Box sx={styles.contentBox}>
+          <TextFeature subTitle={data.subTitle} title={data.title} />
+
+          <Grid sx={styles.grid}>
+            {data.features.map((feature) => (
+              <Box sx={styles.card} key={feature.id}>
+                <Image src={feature.imgSrc} alt={feature.altText} sx={styles.icon} />
+
+                <Box sx={styles.wrapper}>
+                  <Heading sx={styles.wrapper.title}>{feature.title}</Heading>
+                  <Text sx={styles.wrapper.subTitle}>{feature.text}</Text>
+                </Box>
+              </Box>
+            ))}
+          </Grid>
+        </Box>
+      </Container>
+      <ModalVideo 
+        channel="youtube"
+        isOpen={videoOpen}
+        videoId="17KIdivNuSA"
+        onClose={() => setVideoOpen(false)}
+      />
+    </section>
   );
 }
 

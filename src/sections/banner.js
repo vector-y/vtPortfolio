@@ -6,8 +6,30 @@ import ShapeLeft from 'assets/shape-left.png';
 import ShapeRight from 'assets/shape-right.png';
 
 export default function Banner() {
+  let saseURL = "https://www.saseconnect.org/";
+  let spaceURL = "https://labs.urspace.io/";
   return (
-    <h1>Banner</h1>
+    <section sx={styles.banner} id="home">
+      <Container sx={styles.banner.container}>
+        <Box sx={styles.banner.contentBox}>
+          <Heading as="h1" variant="heroPrimary">
+            Victor is a UX engineer! <br/> He enjoys Arizona Tea, running, and building legos.
+          </Heading>
+          <Text as="p" variant="heroSecondary">
+            Studying Computer Science @ Long Beach State <br/>
+            President @ <a style={{color: "#5865F2", textDecoration: 'none'}} href={saseURL}>Society of Asian Scientists and Engineers</a> <br/>
+            Previously @ <a style={{color: "#5865F2", textDecoration: 'none'}} href={spaceURL}>urspace Labs</a> <br/>
+          </Text>
+          <Button variant="primary">
+            Explore
+          </Button>
+        </Box>
+
+        <Box sx={styles.banner.imageBox}>
+          <Image src={BannerImg} alt='banner' />
+        </Box>
+      </Container>
+    </section>
   );
 }
 
