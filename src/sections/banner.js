@@ -26,7 +26,7 @@ export default function Banner() {
         </Box>
 
         <Box sx={styles.banner.imageBox}>
-          <Image src={BannerImg} alt='banner' />
+          <Image src={BannerImg} alt='banner'/>
         </Box>
       </Container>
     </section>
